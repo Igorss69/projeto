@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('pacientes', [PacientesController::class, "index"]);
 Route::post('/cadastrar_paciente', [PacientesController::class, 'cadastrarPaciente'])->name('cadastrar_paciente');
 Route::delete('/deletar_paciente/{id}', [PacientesController::class, 'deletarPaciente'])->name('deletar_paciente');
-Route::post('/formulario/{id}', [FormulariosController::class, 'formularioInicial']);
+Route::post('/formulario', [FormulariosController::class, 'formularioInicial'])->name('formularioInicial');
 
 
 

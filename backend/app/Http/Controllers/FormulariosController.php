@@ -3,28 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Formulario;
-use App\Models\Paciente;
 use Illuminate\Http\Request;
 
 class FormulariosController extends Controller
 {
-    public function index(){
-        return Formulario::all();
-    }
+    public function formularioInicial(Request $request)
+    {
+        // Acessa os parâmetros enviados no corpo da requisição POST
+        $temperatura = $request->input('temperatura');
+        $pressaoSistolica = $request->input('pasistolica');
+        $pressaoDiastolica = $request->input('paditolica');
+        $frequenciaRespiratoria = $request->input('frequencia');
+        $pacienteid = $request->input('paciente');
 
-    public function formularioInicial(Request $request, $pacienteID){
+        // Cria um novo registro no banco de dados usando o modelo "Formulario"
+        $formulario = new Formulario([
+            'pacienteid' => $pacienteid,
+            'temperatura' => $temperatura,
+            'pa_sistolica' => $pressaoSistolica,
+            'pa_diastolica' => $pressaoDiastolica,
+            'f_respiratoria' => $frequenciaRespiratoria,
+        ]);
 
-        $formulario = Formulario::findOrFail($pacienteID);
-
-        $formulario = Formulario::where('paciente_id', $pacienteID)->firstOrFail();
-    
-        $formulario->temperatura = $request->input('temperatura');
-        $formulario->pressao_sistolica = $request->input('pressaoSistolica');
-        $formulario->pressao_diastolica = $request->input('pressaoDiastolica');
-        $formulario->frequencia_respiratoria = $request->input('frequenciaRespiratoria');
-    
+        // Salva o registro no banco de dados
         $formulario->save();
-    
+
         return response()->json([
             'success' => true,
             'message' => 'Dados do paciente atualizados com sucesso!'

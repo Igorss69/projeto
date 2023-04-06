@@ -1,26 +1,31 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useParams } from 'react-router-dom';
+import { useRoute } from '@react-navigation/native';
 
-function Formulario({ route }) {
+function Formulario() {
   const [temperatura, setTemperatura] = useState("");
   const [pressaoSistolica, setPressaoSistolica] = useState("");
   const [pressaoDiastolica, setPressaoDiastolica] = useState("");
   const [frequenciaRespiratoria, setFrequenciaRespiratoria] = useState("");
 
+  const route = useRoute();
+  const pacienteid = route.params;
+
+  const formulario ={
+    paciente: pacienteid,
+    temperatura: temperatura,
+    pasistolica: pressaoSistolica,
+    paditolica: pressaoDiastolica,
+    frequencia: frequenciaRespiratoria
+  }
+
+  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(route);
     try {
-      const response = await axios.post(
-        `http://localhost:8000/api/formulario/`, 
-        {
-          temperatura: temperatura,
-          pressao_sistolica: pressaoSistolica,
-          pressao_diastolica: pressaoDiastolica,
-          frequencia_respiratoria: frequenciaRespiratoria,
-        }
-      );
+      const response = await axios.post("http://127.0.0.1:8000/api/formulario", formulario);
       console.log(response.data);
     } catch (error) {
       console.log(error);
@@ -71,8 +76,10 @@ function Formulario({ route }) {
         />
       </div>
       <button type="submit">Enviar</button>
+      
     </form>
-  );
+      );
+  
 }
 
 export default Formulario;

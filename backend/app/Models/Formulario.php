@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Formulario extends Model
 {
     protected $fillable = [
-        'nome',
+        'idpaciente',
         'temperatura',
         'pa_sistolica',
         'pa_diastolica',
