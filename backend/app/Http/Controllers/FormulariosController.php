@@ -15,10 +15,12 @@ class FormulariosController extends Controller
         $pressaoDiastolica = $request->input('paditolica');
         $frequenciaRespiratoria = $request->input('frequencia');
         $pacienteid = $request->input('paciente');
+        $frequenciaCardiaca = $request->input('cardiaca');
 
         // Cria um novo registro no banco de dados usando o modelo "Formulario"
         $formulario = new Formulario([
             'pacienteid' => $pacienteid,
+            'f_cardiaca' => $frequenciaCardiaca,
             'temperatura' => $temperatura,
             'pa_sistolica' => $pressaoSistolica,
             'pa_diastolica' => $pressaoDiastolica,
@@ -32,5 +34,11 @@ class FormulariosController extends Controller
             'success' => true,
             'message' => 'Dados do paciente atualizados com sucesso!'
         ]);
+
+    }
+
+    public function index (Request $request){
+        return Formulario::all();
+        
     }
 }

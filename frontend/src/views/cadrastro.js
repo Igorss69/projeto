@@ -1,8 +1,13 @@
 import React from "react";
 import { useState} from "react";
 import axios from "axios";
+import '../styles/style.css'
+import { useNavigation } from '@react-navigation/native';
 
 function Cadastro() {
+
+  const navigation = useNavigation();
+
   const [nome, setNome] = useState("");
   const [dataNascimento, setDataNascimento] = useState("");
   const [cpf, setCpf] = useState("");
@@ -25,52 +30,63 @@ function Cadastro() {
       .catch((error) => {
         console.log(error);
       });
+
+      navigation.navigate('Index');
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Nome:
+    <form className="form-group" onSubmit={handleSubmit}>
+    <div class="cadpacientes">
+      <div className="form-group">
+        <label htmlFor="nome">Nome:</label><br/>
         <input
+          id="nome"
+          className="form-control"
           type="text"
+          class="pac"
           value={nome}
           onChange={(event) => setNome(event.target.value)}
         />
-      </label>
-      <br />
-      <label>
-        Data de nascimento:
+      </div>
+      <div className="form-group">
+        <label htmlFor="dataNascimento">Data de nascimento:</label><br/>
         <input
+          id="dataNascimento"
+          className="form-control"
           type="date"
+          class="pac"
           value={dataNascimento}
-          onChange={(event) =>
-            setDataNascimento(event.target.value)
-          }
+          onChange={(event) => setDataNascimento(event.target.value)}
         />
-      </label>
-      <br />
-      <label>
-        CPF:
+      </div>
+      <div className="form-group">
+        <label htmlFor="cpf">CPF:</label><br/>
         <input
+          id="cpf"
+          className="form-control"
           type="text"
+          class="pac"
           value={cpf}
           onChange={(event) => setCpf(event.target.value)}
         />
-      </label>
-      <br />
-      <label>
-        Telefone:
+      </div>
+      <div className="form-group">
+        <label htmlFor="telefone">Telefone:</label><br/>
         <input
+          id="telefone"
+          className="form-control"
           type="text"
+          class="pac"
           value={telefone}
-          onChange={(event) =>
-            setTelefone(event.target.value)
-          }
+          onChange={(event) => setTelefone(event.target.value)}
         />
-      </label>
-      <br />
-      <button type="submit">Enviar</button>
-    </form>
+      </div><br/>
+      <button type="submit" className="btn btn-primary">
+        Enviar
+      </button>
+    </div>
+  </form>
+
   );
 }
 

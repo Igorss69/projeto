@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('formularios', function (Blueprint $table) {
+        Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
-            $table->string('pacienteid');
-            $table->string('f_cardiaca');
-            $table->string('temperatura');
-            $table->string('pa_sistolica');
-            $table->string('pa_diastolica');
-            $table->string('f_respiratoria');
+            $table->string('name');
+            $table->string('nascimento');
+            $table->date('cpf');
+            $table->string('telefone');
             $table->timestamps();
         });
     }

@@ -9,6 +9,7 @@ class Formulario extends Model
 {
     protected $fillable = [
         'idpaciente',
+        'f_cardiaca',
         'temperatura',
         'pa_sistolica',
         'pa_diastolica',

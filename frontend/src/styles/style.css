@@ -1,0 +1,118 @@
+.container {
+   background-color: rgb(117, 249, 253);
+   margin-top: 100px;
+   border-radius: 20px;
+   padding: 30px;
+   width: 70%;
+};
+
+
+.inicial{
+    padding: 10px;
+    margin: 40px;
+}
+
+.list-group-item{
+    padding: 10px;
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.formulario{
+    background-color: rgb(117, 249, 253);
+    width: 80%;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.formulariocovid{
+    background-color: rgb(117, 249, 253);
+    width: 60%;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.labelsintoma{
+    position: relative;
+    left: 200px;
+}
+
+.botaocovid{
+    margin-top: 10px;
+    border: 0px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+body{
+    background-color: rgb(240, 239, 239);
+}
+
+.sintomas{
+    padding: 10px;
+}
+
+.input{
+    width: 25%;
+    border-radius: 5px;
+    border: 0px;
+}
+
+.btnsec{
+    border: 0px;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.btncadastrar{
+    margin-top: 10px;
+    border: 0px;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #ffffff;
+}
+
+.cadpacientes{
+    background-color: rgb(117, 249, 253);
+    width: 70%;
+    text-align: center;
+    margin: auto;
+    margin-top: 150px;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.pac{
+    width: 50%;
+    border-radius: 10px;
+    padding: 2px;
+    border: 0px;
+}
+
+.bot{
+    border-color: rgb(21, 255, 0);
+    border-radius: 10px;
+    float: right;
+    top: 30px;
+    left: 0px;
+}
+
+
+.del{
+    margin-top: 15px;
+    border-radius: 7px;
+    border: 0px;
+    background-color: rgba(255, 0, 0, 0.795);
+    padding: 5px;
+    float: right;
+    position: relative;
+    bottom: 50px;
+    right: 50px;
+    color: white
+}

@@ -19,6 +19,7 @@ class PacientesController extends Controller
         $paciente->data_nascimento = $request->data_nascimento;
         $paciente->cpf = $request->cpf;
         $paciente->telefone = $request->telefone;
+
         $paciente->save();
 
         return response()->json([
