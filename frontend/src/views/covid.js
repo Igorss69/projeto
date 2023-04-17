@@ -34,6 +34,8 @@ function Covid(props){
     } catch (error) {
       console.log(error);
     }
+
+    alert('Sintomas Cadastrado')
     navigation.navigate('Index');
   };
     

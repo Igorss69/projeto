@@ -3,6 +3,9 @@ import { useState} from "react";
 import axios from "axios";
 import '../styles/style.css'
 import { useNavigation } from '@react-navigation/native';
+import InputMask from "react-input-mask";
+import MaskedInput from "react-text-mask";
+
 
 function Cadastro() {
 
@@ -12,27 +15,35 @@ function Cadastro() {
   const [dataNascimento, setDataNascimento] = useState("");
   const [cpf, setCpf] = useState("");
   const [telefone, setTelefone] = useState("");
+  const [imagem, setImagem] = useState(null);
 
-
-  const paciente = {
-    nome: nome,
-    data_nascimento: dataNascimento,
-    cpf: cpf,
-    telefone: telefone
-  };
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post("http://127.0.0.1:8000/api/cadastrar_paciente", paciente)
+  
+    const formData = new FormData();
+    formData.append('nome', nome);
+    formData.append('data_nascimento', dataNascimento);
+    formData.append('cpf', cpf);
+    formData.append('telefone', telefone);
+    formData.append('imagem', imagem);
+  
+    axios.post("http://127.0.0.1:8000/api/cadastrar_paciente", formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
       .then((response) => {
         console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-
-      navigation.navigate('Index');
+  
+    alert('Usuário cadastrado com sucesso');
+    navigation.navigate("Index");
   }
+  
 
   return (
     <form className="form-group" onSubmit={handleSubmit}>
@@ -61,24 +72,45 @@ function Cadastro() {
       </div>
       <div className="form-group">
         <label htmlFor="cpf">CPF:</label><br/>
-        <input
-          id="cpf"
-          className="form-control"
-          type="text"
-          class="pac"
-          value={cpf}
-          onChange={(event) => setCpf(event.target.value)}
-        />
+        <InputMask
+        mask="999.999.999-99"
+        value={cpf}
+        class="input"
+        onChange={(event) => setCpf(event.target.value)}
+      />
       </div>
       <div className="form-group">
         <label htmlFor="telefone">Telefone:</label><br/>
+        <MaskedInput
+        mask={[
+          "(",
+          /[1-9]/,
+          /\d/,
+          ")",
+          " ",
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          "-",
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+        ]}
+        value={telefone}
+        class="input"
+        onChange={(event) => setTelefone(event.target.value)}
+      />
+
+      </div><br/>
+      <div className="form-group">
+        <label htmlFor="imagem">Imagem:</label>
         <input
-          id="telefone"
-          className="form-control"
-          type="text"
-          class="pac"
-          value={telefone}
-          onChange={(event) => setTelefone(event.target.value)}
+          id="imagem"
+          type="file"
+          className="form-control-file"
+          onChange={(event) => setImagem(event.target.files[0])}
         />
       </div><br/>
       <button type="submit" className="btn btn-primary">

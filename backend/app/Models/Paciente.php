@@ -11,6 +11,7 @@ class Paciente extends Model
         'nome',
         'data_nascimento',
         'cpf',
-        'telefone'
+        'telefone',
+        'imagem'
     ];
 }

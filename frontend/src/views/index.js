@@ -48,23 +48,26 @@ function Index() {
   }
   
   return (
-          <div class="container">
-            <h1 class="titulo">Lista de Pacientes:</h1>
-            <div className="list-group mb-4" class="divinicial">
-              { apiData.map((paciente) => (
-                <div className="list-group-item" key={paciente.cpf}>
-                  <button className="btn btn-outline-primary mr-2" class="bot" onClick={() => handleFormularioClick(paciente.id)}><BsChevronRight /></button><br/>
-                  <span>Nome: {paciente.nome}</span>
-                  <br />
-                  <span>CPF: {paciente.cpf}</span>
-                  <br />
-                  <span>Telefone: {paciente.telefone}</span><br/>
-                  <button className="btn btn-outline-danger ml-2" class="del" onClick={() => handleClick(paciente.id)}>Deletar</button>
-                </div>
-              )) }
-            </div>
-            <button className="btn btn-primary" onClick={handleCadastroClick}>Cadastrar</button>
-                </div>
+          <div class="img"> 
+            <div class="container">
+              <h1 class="titulo">Lista de Pacientes:</h1>
+              <div className="list-group mb-4" class="divinicial">
+                { apiData.map((paciente) => (
+                  <div className="list-group-item" key={paciente.cpf}>
+                    <button className="btn btn-outline-primary mr-2" class="bot" onClick={() => handleFormularioClick(paciente.id)}><BsChevronRight /></button><br/>
+                    <img src={paciente.imagem} alt={`Imagem de ${paciente.nome}`} />
+                    <span>Nome: {paciente.nome}</span>
+                    <br />
+                    <span>CPF: {paciente.cpf}</span>
+                    <br />
+                    <span>Telefone: {paciente.telefone}</span><br/>
+                    <button className="btn btn-outline-danger ml-2" class="del" onClick={() => handleClick(paciente.id)}>Deletar</button>
+                  </div>
+                )) }
+              </div>
+              <button className="btn btn-primary" onClick={handleCadastroClick}>Cadastrar</button>
+                  </div>
+          </div>
   );
   
 }
